@@ -32,8 +32,8 @@ Create a blog to be able to share articles with readers.
     * JSON
 * API Endpoints
     * Get a list of Articles
-        * “api/articles”
+        * "api/articles"
     * Get individual Blog
-        * “api/articles/:article_id
+        * "api/articles/:article_id"
     * Post article
-        * “api/articles
+        * "api/articles"
