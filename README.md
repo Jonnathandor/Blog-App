@@ -10,7 +10,7 @@ Create a blog to be able to share articles with readers.
 
 
 ## Diagrams
-
+https://app.diagrams.net/#G1Vug4elKKz9f3aQcEkoYbDra7Obcruejg 
 ## Business Requirements
 * Pages
     * Home Page.
