@@ -20,6 +20,7 @@ app.get('/api/articles', (req, res) => {
 })
 
 app.get('/api/article/:article_id', (req, res) => {
+    
     let found = article.getArticle(req.params.article_id);
 
     if(found.length !== 0){
