@@ -22,7 +22,7 @@ const buildArticles = (blogArticles) => {
     for(article of blogArticles){
         const articleDate = new Date(parseInt(article.added_date)).toDateString();
         let articleImage = `${API_BASE_URL}${article.post_image}`;
-        const articleLink = `/article.html?id=${article.id}`;
+        const articleLink = `./article.html?id=${article.id}`;
         articleContent += `
         <a class="article-link" href="${articleLink}">
             <div class="article">

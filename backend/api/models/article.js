@@ -10,7 +10,7 @@ class Article {
     getArticle(articleId){
         const articles = this.readArticles();
         let article = articles.filter(article => article.id == articleId)
-        return article;
+        return article[0];
     }
 
     addArticle(newArticle){
