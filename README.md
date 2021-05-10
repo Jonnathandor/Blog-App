@@ -36,4 +36,4 @@ https://app.diagrams.net/#G1Vug4elKKz9f3aQcEkoYbDra7Obcruejg
     * Get individual Blog
         * "api/articles/:article_id"
     * Post article
-        * "api/articles"
+        * "api/article"

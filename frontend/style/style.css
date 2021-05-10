@@ -57,6 +57,7 @@ header {
     min-height: 200px;
     overflow: hidden;
     transition: all 0.25s ease;
+    margin-bottom: 20px;
 }
 
 .article:hover {
@@ -121,6 +122,24 @@ header {
 
 .nav-button.new-article-button:hover {
     background-color: #002349;
+}
+
+.navigation a {
+    text-decoration: none;
+    color: #333;
+    border: 1px solid #004186;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+.navigation {
+    margin-bottom: 35px;
+}
+
+a.article-link {
+    text-decoration: none;
+    color: #495057;
 }
 
 footer {
