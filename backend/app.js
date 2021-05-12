@@ -1,12 +1,41 @@
 const express = require('express');
 const app = express();
 const Article = require('./api/models/article');
+const multer = require('multer');
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, './uploads')
+    },
+    filename: function (req, file, cb) {
+      cb(null, `${file.fieldname}-${Date.now()}${getExt(file.mimetype)}`)
+    }
+})
+
+const upload = multer({storage: storage});
+
+const getExt = (mimeType) => {
+    switch(mimeType){
+        case 'image/png':
+            return '.png';
+        case 'image/jpeg':
+            return '.jpeg';
+    }
+}
+
 const article = new Article();
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     next();
 })
+
+// Converts to json the payloads in the body
+app.use(express.json());
+
+// REFACTOR: 
+// the routers could be in their own module: https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes
+// this file is getting messy
 
 // This middleware makes the uploads folders public
 app.use('/uploads', express.static('uploads'));
@@ -26,12 +55,24 @@ app.get('/api/article/:article_id', (req, res) => {
     if(found.length !== 0){
         res.status(200).send(found);
     } else {
-        res.status(404).send("Not Found");
+        res.status(404).send('Not Found');
     }
     
 })
 
-app.post('/api/articles', (req, res) => {
+app.post('/api/article', upload.single('post_image'), (req, res) => {
+    console.log(req.body)
+    const newArticle = {
+        "id": `${Date.now()}`,
+        "title": req.body.title,
+        "content": req.body.content,
+        "post_image": req.file.path,
+        "added_date": `${Date.now()}`
+    }
+
+    article.addArticle(newArticle);
+    res.status(201).send(newArticle);
+
     
 })
 
